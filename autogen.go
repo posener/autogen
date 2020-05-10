@@ -7,7 +7,8 @@
 // generated files will be located by default in the parent directory, but this location can be
 // customized with the `Location` option. The main package should define the variables to be used
 // in the templates and run the `autogen.Execute` function with this variable.
-// The main package should include a `//go:generate go run .` comment.
+// The main package should include a `//go:generate go run .` comment. All that left to do is to run
+// `go generate ./...` from the Go module's root.
 //
 // See example at the ./example directory.
 package autogen
@@ -36,6 +37,7 @@ var (
 	// ModulePath is the absolute path of the current Go module.
 	ModulePath string
 
+	// absPath holds the absolute path of the main package that called autogen.
 	absPath string
 )
 
@@ -43,7 +45,7 @@ type config struct {
 	outputPath string
 }
 
-// Set output path location. Default is the parent directory of the generating file.
+// Location sets the output path location. Default is the parent directory of the generating file.
 func Location(path string) func(c *config) {
 	return func(c *config) {
 		c.outputPath = path

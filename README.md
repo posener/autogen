@@ -11,7 +11,8 @@ files. These templates should have the generated file names suffixed with ".gotm
 generated files will be located by default in the parent directory, but this location can be
 customized with the `Location` option. The main package should define the variables to be used
 in the templates and run the `autogen.Execute` function with this variable.
-The main package should include a `//go:generate go run .` comment.
+The main package should include a `//go:generate go run .` comment. All that left to do is to run
+`go generate ./...` from the Go module's root.
 
 See example at the [./example](./example) directory.
 

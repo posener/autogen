@@ -1,0 +1,18 @@
+// Package example is a simple example that uses autogen.
+package example
+
+const (
+    // Sounds.
+
+{{ range . }}
+    // {{ .Name }}Sound is the name of the sound that {{ .Name }} does.
+    {{ .Name }}Sound = "{{ .Sound }}"
+{{- end }}
+
+    // Name lengths.
+
+{{ range . }}
+    //{{ .Name }}Len is the number of characters in the name {{ .Name }}.
+    {{ .Name }}Len = {{ .NameLen }}
+{{- end }}
+)
